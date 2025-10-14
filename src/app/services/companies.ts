@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Company {
-  id: string;
-  name: string;
-  cnpj: string;
-  active: boolean;
-}
+import { CompanyModel } from '../models/company';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CompaniesService {
-  private apiUrl = 'http://localhost:3000/companies'; 
+export class CompanyService {
+  private apiUrl = 'http://localhost:3000/companies';
 
   constructor(private http: HttpClient) {}
 
-  getCompanies(): Observable<Company[]> {
-    return this.http.get<Company[]>(this.apiUrl);
+  getCompanies(): Observable<CompanyModel[]> {
+    return this.http.get<CompanyModel[]>(this.apiUrl);
   }
 
 }
